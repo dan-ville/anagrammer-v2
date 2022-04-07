@@ -104,7 +104,7 @@ export const Form = () => {
           />
         </Flex>
         <Spacer y={1.5} />
-        <Button type="submit" color="gradient" shadow bordered>
+        <Button type="submit" auto color="gradient" shadow bordered>
           Generate
         </Button>
       </StyledForm>

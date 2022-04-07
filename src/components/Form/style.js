@@ -4,6 +4,8 @@ export const Flex = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 1rem;
+  flex-direction: column;
+  // @media (min-width:)
 `
 
 export const StyledForm = styled.form`

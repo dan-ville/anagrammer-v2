@@ -5,6 +5,7 @@ import MainContent from "./components/ MainContent/MainContent.jsx"
 import { LayoutWrapper } from "./layout/LayoutWrapper.jsx"
 import { Header } from "./components/Header/Header.jsx"
 import Footer from "./components/Footer/Footer.jsx"
+import Menu from "./components/Menu/Menu.jsx"
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Header />
           <MainContent />
           <Footer />
+          <Menu />
         </LayoutWrapper>
       </NextUIProvider>
     </ContextProvider>
