@@ -27,7 +27,7 @@ const MyAnagrams = () => {
 
   return (
     <>
-      <Text h2>My anagrams</Text>
+      <Text h2 css={{marginTop: 0}}>My anagrams</Text>
       {anagrams.map((list, index) => (
         <Fragment key={list.id}>
           <Spacer y={2} />
