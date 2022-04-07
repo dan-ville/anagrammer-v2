@@ -1,29 +1,41 @@
 import { Button, Spacer, Text, useTheme } from "@nextui-org/react"
-import Icon from "../assets/Icon/Icon"
-import useAppContext from "../context/useAppContext"
-import anagrammer from "../img/anagrammer.svg"
+import Icon from "../../assets/Icon/Icon"
+import useAppContext from "../../context/useAppContext"
+import anagrammer from "../../img/anagrammer.svg"
+
+const useStyles = () => {
+  const { theme } = useTheme()
+
+  return {
+    headerWrapper: {
+      padding: "0.5rem 1rem",
+      borderBottom: `1px solid ${theme.colors.gray800.value}`,
+      width: "100%",
+    },
+    innerWrapper: {
+      maxWidth: "800px",
+      margin: "0 auto",
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+    },
+    navLinks: {
+      display: "flex",
+      gap: "1rem",
+      width: "100%",
+      justifyContent: "flex-end",
+      alignItems: "center",
+    },
+  }
+}
 
 export const Header = () => {
   const { anagrams, setShowAnagrams } = useAppContext()
-  const { theme } = useTheme()
+  const s = useStyles()
 
   return (
-    <div
-      style={{
-        padding: "0.5rem 1rem",
-        borderBottom: `1px solid ${theme.colors.gray800.value}`,
-        width: "100%",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: "800px",
-          margin: "0 auto",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
+    <div style={s.headerWrapper}>
+      <div style={s.innerWrapper}>
         <Icon src={anagrammer} />
         <Spacer />
         <Text
@@ -37,15 +49,7 @@ export const Header = () => {
         >
           Anagrammer
         </Text>
-        <div
-          style={{
-            display: "flex",
-            gap: "1rem",
-            width: "100%",
-            justifyContent: "flex-end",
-            alignItems: "center",
-          }}
-        >
+        <div style={s.navLinks}>
           <Button
             size="sm"
             auto
