@@ -1,16 +1,15 @@
-import React, { Fragment, useContext, useState } from "react"
-import { Input, Button, Spacer, Text } from "@nextui-org/react"
+import React, { Fragment } from "react"
+import { Input, Button, Spacer } from "@nextui-org/react"
 import { useForm } from "react-hook-form"
-import { AppContext } from "../../context/context"
 import { List } from "../List/List"
 import { Flex, StyledForm } from "./style"
 import uuid from "react-uuid"
 import useAppContext from "../../context/useAppContext"
 
-const factorial = (x) => {
-  if (x === 0) return 1
-  return x * factorial(x - 1)
-}
+// const factorial = (x) => {
+//   if (x === 0) return 1
+//   return x * factorial(x - 1)
+// }
 
 const shuffle = (array) => {
   let currentIndex = array.length
@@ -29,18 +28,18 @@ const createAnagramFromWord = (word) => {
   return shuffle(letters).join("")
 }
 
-const generateAnagrams = (word, anagram = "", anagrams = []) => {
-  if (!word) {
-    anagrams.push(anagram)
-    return
-  }
-  for (let i = 0; i < word.length; i++) {
-    anagram += word[i]
-    generateAnagrams(word.slice(0, i) + word.slice(i + 1), anagram, anagrams)
-    anagram = anagram.slice(0, anagram.length - 1)
-  }
-  return [...new Set(anagrams)]
-}
+// const generateAnagrams = (word, anagram = "", anagrams = []) => {
+//   if (!word) {
+//     anagrams.push(anagram)
+//     return
+//   }
+//   for (let i = 0; i < word.length; i++) {
+//     anagram += word[i]
+//     generateAnagrams(word.slice(0, i) + word.slice(i + 1), anagram, anagrams)
+//     anagram = anagram.slice(0, anagram.length - 1)
+//   }
+//   return [...new Set(anagrams)]
+// }
 
 const generateAny = (quantity, word) => {
   if (typeof quantity !== "number") {
@@ -65,7 +64,7 @@ const ActiveList = () => {
 }
 
 export const Form = () => {
-  const { anagrams, setAnagrams, setActiveListId } = useAppContext()
+  const { setAnagrams, setActiveListId } = useAppContext()
   const { register, handleSubmit } = useForm()
 
   // const permutations = factorial(word.length)
@@ -108,7 +107,6 @@ export const Form = () => {
         <Button type="submit" color="gradient" shadow bordered>
           Generate
         </Button>
-        
       </StyledForm>
       <ActiveList />
     </>
