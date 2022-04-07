@@ -10,11 +10,11 @@ const MyAnagrams = () => {
   if (anagrams.length === 0)
     return (
       <CenteredGrid>
-        <Text>No anagrams yet 🥶 Let's make some!</Text>
-        <Text>Let's make some!</Text>
+        <Text size={18}>No anagrams yet 🥶</Text>
+        <Text size={18}>Let's make some!</Text>
         <Spacer />
         <Button
-          size="sm"
+          size="xl"
           auto
           rounded
           color="gradient"
