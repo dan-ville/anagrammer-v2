@@ -1,5 +1,4 @@
 import { Button, Card, Grid, Row, Spacer, Text } from "@nextui-org/react"
-import React from "react"
 import { Link, useNavigate } from "react-router-dom"
 import useAppContext from "../../context/useAppContext"
 import { CenteredGrid } from "./style"

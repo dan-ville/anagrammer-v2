@@ -4,6 +4,7 @@ import MyAnagrams from "../components/MyAnagrams"
 import CreatePage from "../pages/Create"
 import MyAnagramsPage from "../pages/MyAnagrams"
 import AnagramListPage from "../pages/MyAnagrams/AnagramList"
+import NotFoundPage from "../pages/NotFound"
 
 export const AppRouter = () => {
   return (
@@ -15,6 +16,7 @@ export const AppRouter = () => {
             <Route index element={<MyAnagrams />} />
             <Route path=":id" element={<AnagramListPage />} />
           </Route>
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
