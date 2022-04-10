@@ -4,22 +4,20 @@ export const AppContext = createContext()
 
 export const ContextProvider = ({ children }) => {
   const storage = localStorage.getItem("anagrams")
-  const [anagrams, setAnagrams] = useState(storage ? JSON.parse(storage) : [])
-  const [showAnagrams, setShowAnagrams] = useState(false)
+  const [myAnagrams, setMyAnagrams] = useState(
+    storage ? JSON.parse(storage) : []
+  )
   const [activeListId, setActiveListId] = useState()
-  console.log(anagrams.length)
 
   useEffect(() => {
-    localStorage.setItem("anagrams", JSON.stringify(anagrams))
-  }, [anagrams])
+    localStorage.setItem("myAnagrams", JSON.stringify(myAnagrams))
+  }, [myAnagrams])
 
   const contextValue = {
-    anagrams,
-    setAnagrams,
+    myAnagrams,
+    setMyAnagrams,
     activeListId,
     setActiveListId,
-    showAnagrams,
-    setShowAnagrams,
   }
 
   return (

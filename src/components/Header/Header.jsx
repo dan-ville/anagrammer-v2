@@ -1,11 +1,12 @@
 import { Button, Spacer, Text } from "@nextui-org/react"
+import { Link } from "react-router-dom"
 import Icon from "../../assets/Icon/Icon"
 import useAppContext from "../../context/useAppContext"
 import anagrammer from "../../img/anagrammer.svg"
 import { HeaderWrapper, InnerWrapper, Navbar } from "./style"
 
 export const Header = () => {
-  const { anagrams, setShowAnagrams } = useAppContext()
+  const { myAnagrams } = useAppContext()
 
   return (
     <HeaderWrapper>
@@ -24,23 +25,16 @@ export const Header = () => {
           Anagrammer
         </Text>
         <Navbar>
-          <Button
-            size="sm"
-            auto
-            color="error"
-            onClick={() => setShowAnagrams(true)}
-          >
-            My anagrams ( <strong>{anagrams.length}</strong> )
-          </Button>
-          <Button
-            size="sm"
-            auto
-            rounded
-            color="gradient"
-            onClick={() => setShowAnagrams(false)}
-          >
-            Create
-          </Button>
+          <Link to="/my-anagrams">
+            <Button size="sm" auto color="error">
+              My anagrams ( <strong>{myAnagrams.length}</strong> )
+            </Button>
+          </Link>
+          <Link to="/create">
+            <Button size="sm" auto rounded color="gradient">
+              Create
+            </Button>
+          </Link>
         </Navbar>
       </InnerWrapper>
     </HeaderWrapper>

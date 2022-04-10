@@ -2,14 +2,17 @@ import { useContext, useState } from "react"
 import { Button, Card, Checkbox, Text } from "@nextui-org/react"
 import { ListHeader } from "./style"
 import { AppContext } from "../../context/context"
+import { useNavigate } from "react-router-dom"
 
-export const List = ({ list, index = null }) => {
-  const { setAnagrams } = useContext(AppContext)
+const AnagramList = ({ list }) => {
+  const navigate = useNavigate()
+  const { setMyAnagrams } = useContext(AppContext)
   const [showGrid, setShowGrid] = useState(true)
   const { id, word, anagrams } = list
 
   const deleteList = (id) => {
-    setAnagrams((prev) => prev.filter((current) => current.id !== id))
+    setMyAnagrams((prev) => prev.filter((current) => current.id !== id))
+    navigate("/my-anagrams")
   }
 
   if (!anagrams.length) return <></>
@@ -56,7 +59,7 @@ export const List = ({ list, index = null }) => {
             textGradient: "45deg, $yellow500 -20%, $red500 100%",
           }}
         >
-          {index ? `${index} - ` : null} <strong>{word.toUpperCase()}</strong>
+          <strong>{word.toUpperCase()}</strong>
         </Text>
         <Checkbox
           size="xs"
@@ -66,7 +69,13 @@ export const List = ({ list, index = null }) => {
         >
           Grid
         </Checkbox>
-        <Button size="xs" auto color="warning" ghost onClick={() => deleteList(id)}>
+        <Button
+          size="xs"
+          auto
+          color="warning"
+          ghost
+          onClick={() => deleteList(id)}
+        >
           Delete
         </Button>
       </ListHeader>
@@ -74,3 +83,5 @@ export const List = ({ list, index = null }) => {
     </>
   )
 }
+
+export default AnagramList

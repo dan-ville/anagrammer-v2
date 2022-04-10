@@ -1,10 +1,9 @@
-import React, { Fragment } from "react"
 import { Input, Button, Spacer } from "@nextui-org/react"
 import { useForm } from "react-hook-form"
-import { List } from "../List/List"
 import { Flex, StyledForm } from "./style"
 import uuid from "react-uuid"
 import useAppContext from "../../context/useAppContext"
+import AnagramList from "../AnagramList"
 
 // const factorial = (x) => {
 //   if (x === 0) return 1
@@ -43,7 +42,6 @@ const createAnagramFromWord = (word) => {
 
 const generateAny = (quantity, word) => {
   if (typeof quantity !== "number") {
-    console.error(`${quantity} is of type ${typeof quantity}`)
     return []
   }
   const newAnagrams = []
@@ -57,14 +55,15 @@ const generateAny = (quantity, word) => {
 }
 
 const ActiveList = () => {
-  const { anagrams, activeListId } = useAppContext()
+  const { myAnagrams, activeListId } = useAppContext()
   const activeList =
-    anagrams.length && anagrams.find((list) => list.id === activeListId)
-  return activeList ? <List list={activeList} /> : null
+    myAnagrams.length && myAnagrams.find((list) => list.id === activeListId)
+
+  return activeList ? <AnagramList list={activeList} /> : null
 }
 
-export const Form = () => {
-  const { setAnagrams, setActiveListId } = useAppContext()
+const Create = () => {
+  const { setMyAnagrams, activeListId, setActiveListId } = useAppContext()
   const { register, handleSubmit } = useForm()
 
   // const permutations = factorial(word.length)
@@ -74,14 +73,14 @@ export const Form = () => {
     const number = Number(quantity)
     const newAnagrams = generateAny(number, word)
     const newList = { id: uuid(), word, quantity, anagrams: newAnagrams }
-    setAnagrams((prev) => [...prev, newList])
+    setMyAnagrams((prev) => [...prev, newList])
     setActiveListId(newList.id)
   }
 
   // const onSubmit = (data) => {
   //   const { word } = data
   //   const newAnagrams = generateAnagrams(word)
-  //   setAnagrams((prev) => [...newAnagrams])
+  //   setMyAnagrams((prev) => [...newAnagrams])
   // }
 
   return (
@@ -108,7 +107,10 @@ export const Form = () => {
           Generate
         </Button>
       </StyledForm>
+      {activeListId ? <Spacer y={2} /> : null}
       <ActiveList />
     </>
   )
 }
+
+export default Create
