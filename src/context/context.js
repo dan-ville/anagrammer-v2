@@ -3,7 +3,7 @@ import { createContext, useEffect, useState } from "react"
 export const AppContext = createContext()
 
 export const ContextProvider = ({ children }) => {
-  const storage = localStorage.getItem("anagrams")
+  const storage = localStorage.getItem("myAnagrams")
   const [myAnagrams, setMyAnagrams] = useState(
     storage ? JSON.parse(storage) : []
   )
