@@ -10,9 +10,7 @@ const MyAnagrams = () => {
 
   return (
     <>
-      <Text h2 css={{ m: 0, marginBottom: "10px" }}>
-        My anagrams
-      </Text>
+      
       {myAnagrams.length ? (
         <>
           <Grid.Container gap={2} justify="flex-start">
