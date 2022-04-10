@@ -11,7 +11,6 @@ const FooterWrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  // height: 50px;
 `
 const IconLink = styled.a`
   text-decoration: none;

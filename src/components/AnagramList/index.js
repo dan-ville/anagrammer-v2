@@ -1,13 +1,14 @@
 import { useContext, useState } from "react"
-import { Button, Card, Checkbox, Text } from "@nextui-org/react"
-import { ListHeader } from "./style"
 import { AppContext } from "../../context/context"
-import { useNavigate } from "react-router-dom"
+import { Button, Card, Checkbox, Text } from "@nextui-org/react"
+import { ListHeader, ListBody, ToolbarWrapper } from "./style"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 
 const AnagramList = ({ list }) => {
   const navigate = useNavigate()
   const { setMyAnagrams } = useContext(AppContext)
   const [showGrid, setShowGrid] = useState(true)
+  const location = useLocation()
   const { id, word, anagrams } = list
 
   const deleteList = (id) => {
@@ -29,7 +30,13 @@ const AnagramList = ({ list }) => {
       >
         {anagrams.map((item, i) => (
           <Card bordered key={i}>
-            {item}
+            <Text
+              css={{
+                wordBreak: "break-word",
+              }}
+            >
+              {item}
+            </Text>
           </Card>
         ))}
       </section>
@@ -50,36 +57,62 @@ const AnagramList = ({ list }) => {
       </section>
     )
   }
-
-  return (
-    <>
-      <ListHeader>
+  const Toolbar = () => {
+    return (
+      <>
         <Text
           css={{
             textGradient: "45deg, $yellow500 -20%, $red500 100%",
+            wordBreak: "break-word",
           }}
         >
           <strong>{word.toUpperCase()}</strong>
         </Text>
-        <Checkbox
-          size="xs"
-          color="gradient"
-          checked={showGrid}
-          onClick={() => setShowGrid((prev) => !prev)}
-        >
-          Grid
-        </Checkbox>
-        <Button
-          size="xs"
-          auto
-          color="warning"
-          ghost
-          onClick={() => deleteList(id)}
-        >
-          Delete
-        </Button>
+        <ToolbarWrapper>
+          <Checkbox
+            size="xs"
+            color="gradient"
+            checked={showGrid}
+            onClick={() => setShowGrid((prev) => !prev)}
+          >
+            Grid
+          </Checkbox>
+          <Button
+            size="sm"
+            auto
+            color="warning"
+            ghost
+            onClick={() => deleteList(id)}
+          >
+            Del
+          </Button>
+          <Button auto ghost size="sm" onClick={() => navigate("/my-anagrams")}>
+            Back
+          </Button>
+        </ToolbarWrapper>
+      </>
+    )
+  }
+
+  return (
+    <>
+      <ListHeader>
+        {location.pathname === "/create" ? (
+          <Link to={`/my-anagrams/${list.id}`}>
+            <Text
+              h3
+              css={{
+                textGradient: "45deg, $yellow500 -20%, $red500 100%",
+              }}
+            >
+              <strong>{word.toUpperCase()}</strong>
+            </Text>
+          </Link>
+        ) : (
+          <Toolbar />
+        )}
       </ListHeader>
-      {showGrid ? <Grid /> : <OrderedList />}
+      <ListBody>{showGrid ? <Grid /> : <OrderedList />}</ListBody>
     </>
   )
 }

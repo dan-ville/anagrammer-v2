@@ -4,7 +4,6 @@ import { BiMenuAltRight } from "react-icons/bi"
 import { BsFillPlusCircleFill } from "react-icons/bs"
 import { FaBookmark } from "react-icons/fa"
 import { Button } from "@nextui-org/react"
-import useAppContext from "../../context/useAppContext"
 import { useNavigate } from "react-router-dom"
 
 const buttonCSS = {

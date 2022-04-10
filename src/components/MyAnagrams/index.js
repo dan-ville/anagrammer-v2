@@ -9,7 +9,6 @@ const MyAnagrams = () => {
 
   return (
     <>
-      
       {myAnagrams.length ? (
         <>
           <Grid.Container gap={2} justify="flex-start">
@@ -22,10 +21,15 @@ const MyAnagrams = () => {
                   onClick={() => navigate(`/my-anagrams/${list.id}`)}
                 >
                   <Card.Body>
-                    <Text h3>
-                      {list.word.length > 20
-                        ? `${list.word.slice(0, 20)}...`
-                        : list.word}
+                    <Text
+                      css={{
+                        wordBreak: "break-word",
+                      }}
+                    >
+                      {/* {list.word.length > 20
+                        ? `${list.word.slice(0, 15)}...`
+                        : list.word} */}
+                      {list.word}
                     </Text>
                   </Card.Body>
                   <Card.Footer justify="flex-start">
