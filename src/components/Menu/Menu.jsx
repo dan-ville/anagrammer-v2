@@ -5,6 +5,7 @@ import { BsFillPlusCircleFill } from "react-icons/bs"
 import { FaBookmark } from "react-icons/fa"
 import { Button } from "@nextui-org/react"
 import useAppContext from "../../context/useAppContext"
+import { useNavigate } from "react-router-dom"
 
 const buttonCSS = {
   padding: 0,
@@ -17,14 +18,14 @@ const buttonCSS = {
 
 const Menu = () => {
   const [showOptions, setShowOptions] = useState(false)
-  const { setShowAnagrams } = useAppContext()
+  const navigate = useNavigate()
 
   return (
     <MenuWrapper>
       {showOptions ? (
         <>
           <Button
-            onClick={() => setShowAnagrams(true)}
+            onClick={() => navigate("/my-anagrams")}
             auto
             rounded
             color="error"
@@ -33,7 +34,7 @@ const Menu = () => {
             <FaBookmark />
           </Button>
           <Button
-            onClick={() => setShowAnagrams(false)}
+            onClick={() => navigate("/create")}
             auto
             rounded
             color="primary"
