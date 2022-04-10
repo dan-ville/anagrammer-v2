@@ -1,7 +1,7 @@
 import { useContext, useState } from "react"
 import { AppContext } from "../../context/context"
-import { Button, Card, Checkbox, Text } from "@nextui-org/react"
-import { ListHeader, ListBody, ToolbarWrapper } from "./style"
+import { Button, Card, Checkbox, Spacer, Text } from "@nextui-org/react"
+import { ListHeaderWrapper, ListBody, ToolbarWrapper } from "./style"
 import { Link, useLocation, useNavigate } from "react-router-dom"
 
 const AnagramList = ({ list }) => {
@@ -61,6 +61,7 @@ const AnagramList = ({ list }) => {
     return (
       <>
         <Text
+          h3
           css={{
             textGradient: "45deg, $yellow500 -20%, $red500 100%",
             wordBreak: "break-word",
@@ -68,6 +69,7 @@ const AnagramList = ({ list }) => {
         >
           <strong>{word.toUpperCase()}</strong>
         </Text>
+        <Spacer y={1} />
         <ToolbarWrapper>
           <Checkbox
             size="xs"
@@ -78,7 +80,7 @@ const AnagramList = ({ list }) => {
             Grid
           </Checkbox>
           <Button
-            size="sm"
+            size="xs"
             auto
             color="warning"
             ghost
@@ -86,7 +88,7 @@ const AnagramList = ({ list }) => {
           >
             Del
           </Button>
-          <Button auto ghost size="sm" onClick={() => navigate("/my-anagrams")}>
+          <Button auto ghost size="xs" onClick={() => navigate("/my-anagrams")}>
             Back
           </Button>
         </ToolbarWrapper>
@@ -96,7 +98,7 @@ const AnagramList = ({ list }) => {
 
   return (
     <>
-      <ListHeader>
+      <ListHeaderWrapper>
         {location.pathname === "/create" ? (
           <Link to={`/my-anagrams/${list.id}`}>
             <Text
@@ -111,7 +113,7 @@ const AnagramList = ({ list }) => {
         ) : (
           <Toolbar />
         )}
-      </ListHeader>
+      </ListHeaderWrapper>
       <ListBody>{showGrid ? <Grid /> : <OrderedList />}</ListBody>
     </>
   )

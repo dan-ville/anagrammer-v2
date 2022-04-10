@@ -26,9 +26,6 @@ const MyAnagrams = () => {
                         wordBreak: "break-word",
                       }}
                     >
-                      {/* {list.word.length > 20
-                        ? `${list.word.slice(0, 15)}...`
-                        : list.word} */}
                       {list.word}
                     </Text>
                   </Card.Body>

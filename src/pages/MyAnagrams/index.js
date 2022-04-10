@@ -8,7 +8,7 @@ const MyAnagramsPage = () => {
   return (
     <>
       {myAnagrams.length ? (
-        <Text h2 css={{ m: 0, marginBottom: "10px", fontSize: "1.5rem" }}>
+        <Text h2 css={{ m: 0, fontSize: "1.25rem", padding: "0 1rem" }}>
           My anagrams
         </Text>
       ) : null}
