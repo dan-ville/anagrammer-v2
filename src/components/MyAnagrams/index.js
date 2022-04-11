@@ -37,21 +37,21 @@ const MyAnagrams = () => {
 
   return (
     <>
-      <FlexWrapper>
-        <Checkbox
-          checked={toggleDeleteMode}
-          onChange={() => setToggleDeleteMode((prev) => !prev)}
-        >
-          Select
-        </Checkbox>
-        {toggleDeleteMode ? (
-          <Button size="sm" auto color="warning" ghost onClick={handleDelete}>
-            <FiTrash2 />
-          </Button>
-        ) : null}
-      </FlexWrapper>
       {myAnagrams.length ? (
         <>
+           <FlexWrapper>
+            <Checkbox
+              checked={toggleDeleteMode}
+              onChange={() => setToggleDeleteMode((prev) => !prev)}
+            >
+              Select
+            </Checkbox>
+            {toggleDeleteMode ? (
+              <Button size="sm" auto color="warning" ghost onClick={handleDelete}>
+                <FiTrash2 />
+              </Button>
+            ) : null}
+          </FlexWrapper>
           <Grid.Container gap={2} justify="flex-start">
             {myAnagrams.map((list, index) => {
               const isSelected = listsToDelete.indexOf(list.id) !== -1
