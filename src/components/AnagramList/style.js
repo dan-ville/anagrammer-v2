@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const ListHeaderWrapper = styled.div`
   text-align: left;
-  padding: 1rem;
+  padding: 1rem 0;
 `
 export const ToolbarWrapper = styled.div`
   display: flex;

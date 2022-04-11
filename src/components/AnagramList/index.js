@@ -25,7 +25,7 @@ const AnagramList = ({ list }) => {
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(150px, auto)",
           gap: "1rem",
-          padding: "1rem",
+          padding: "1rem 0",
         }}
       >
         {anagrams.map((item, i) => (
@@ -46,7 +46,7 @@ const AnagramList = ({ list }) => {
     return (
       <section
         style={{
-          padding: "1rem",
+          padding: "1rem 0",
         }}
       >
         <ol>
@@ -57,6 +57,7 @@ const AnagramList = ({ list }) => {
       </section>
     )
   }
+  
   const Toolbar = () => {
     return (
       <>
