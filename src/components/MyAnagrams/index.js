@@ -99,7 +99,7 @@ const MyAnagrams = () => {
             <Text size={18}>Let's make some!</Text>
             <Spacer />
             <Link to="/create">
-              <Button size="xl" auto rounded color="gradient">
+              <Button size="xl" rounded color="gradient">
                 Create
               </Button>
             </Link>
