@@ -3,6 +3,7 @@ import styled from "styled-components"
 export const CenteredGrid = styled.div`
   display: grid;
   place-items: center;
+  text-align: center;
 `
 export const FlexWrapper = styled.div`
   display: flex;
